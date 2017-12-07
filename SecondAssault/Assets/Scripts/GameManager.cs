@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour {
 
     [SerializeField] private GameObject gameOverUI;
     [SerializeField] private GameObject inGameUI;
+    [SerializeField] private GameObject pauseUI;
     [SerializeField] private Image healthBar;
     [SerializeField] private Text healthText;
     [SerializeField] private Color healthBarLowColor;
@@ -28,7 +29,9 @@ public class GameManager : MonoBehaviour {
     private bool gameOver;
     private bool isHalfHealth;
     private bool isHealthBlinking;
+    private bool isGameInPause;
 
+    public bool IsGameInPause { get { return isGameInPause; } set { isGameInPause = value; } }
     public Dictionary<string, Gun> AllGuns {get {return allGuns;} set {allGuns = value;} }
 
     private void Awake()
@@ -65,10 +68,40 @@ public class GameManager : MonoBehaviour {
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+                SceneManager.LoadScene("Game");
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            PauseGame();
+        }
     }
+
+    public void PauseGame()
+    {
+        if (pauseUI.activeInHierarchy == false)
+        {
+            isGameInPause = true;
+            pauseUI.SetActive(true);
+            Time.timeScale = 0;
+            Cursor.visible = true;
+        }
+        else
+        {
+            isGameInPause = false;
+            pauseUI.SetActive(false);
+            Time.timeScale = 1;
+            Cursor.visible = false;
+        }
+    }
+
+    public void ExitToMenu()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene("MainMenu");
+    }
+
     private void OnPlayerDeath()
     {
         gameOver = true;

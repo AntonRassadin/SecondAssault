@@ -37,17 +37,20 @@ public class PlayerController : MonoBehaviour {
     }
 
     private void Update () {
-        Move();
-        Rotate();
-
-        if (Input.GetMouseButtonDown(0) && !player.dead)
+        if (!player.dead && !GameManager.instance.IsGameInPause)
         {
-            gunController.Shoot();
-        }
+            Move();
+            Rotate();
 
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            gunController.Reload();
+            if (Input.GetMouseButtonDown(0))
+            {
+                gunController.Shoot();
+            }
+
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                gunController.Reload();
+            }
         }
     }
 

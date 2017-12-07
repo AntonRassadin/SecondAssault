@@ -48,7 +48,7 @@ public class Enemy : LivingEntity {
 	
 	// Update is called once per frame
 	void Update () {
-        if (playerDead == false)
+        if (playerDead == false && !GameManager.instance.IsGameInPause)
         {
             LookForPlayer();
         }
