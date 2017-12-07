@@ -13,7 +13,7 @@ public class Player : LivingEntity {
     private float cameraRotationLimit = 85f;
 
     [SerializeField]
-    private float timeToAutoRegenHealth = 5f;
+    private float timeToAutoRegenHealth = 2f;
 
     [Header("Blood Screen Effects")]
     [SerializeField]

@@ -32,6 +32,7 @@ public class PlayerController : MonoBehaviour {
         player = GetComponent<Player>();
         gunController = GetComponent<GunController>();
         gunController.EquipGun();
+        SetMouseSensivity();
         //StartCoroutine(EnquipGunWithDelay());
     }
 
@@ -100,6 +101,11 @@ public class PlayerController : MonoBehaviour {
     {
         yield return new WaitForSeconds(1);
         gunController.EquipGun();
+    }
+
+    private void SetMouseSensivity()
+    {
+        lookSensitivity = PlayerPrefs.GetFloat("mouse sensivity", 5);
     }
 
     private void Move()

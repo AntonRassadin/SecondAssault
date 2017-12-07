@@ -104,7 +104,7 @@ public class GameManager : MonoBehaviour {
         gameOver = true;
         player.dead = true;
         inGameUI.SetActive(false);
-        float time = Time.time;
+        float time = Time.timeSinceLevelLoad;
         int minutes = Mathf.FloorToInt(time / 60F);
         int seconds = Mathf.FloorToInt(time - minutes * 60);
         string timeString = string.Format("{0:0}:{1:00}", minutes, seconds);
