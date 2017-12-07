@@ -31,9 +31,8 @@ public class PlayerController : MonoBehaviour {
     private void Start () {
         player = GetComponent<Player>();
         gunController = GetComponent<GunController>();
-        //gunController.EquipGun();
-        //временное решение, тк успевает загрузиться 
-        StartCoroutine(EnquipGunWithDelay());
+        gunController.EquipGun();
+        //StartCoroutine(EnquipGunWithDelay());
     }
 
     private void Update () {
@@ -91,12 +90,14 @@ public class PlayerController : MonoBehaviour {
                 }
                 Destroy(other.gameObject);
             }
+        }else if(other.gameObject.tag == "EndGame")
+        {
+            GameManager.instance.EndGame();
         }
     }
 
     private IEnumerator EnquipGunWithDelay()
     {
-        //временное решение не успевает загрузиться 
         yield return new WaitForSeconds(1);
         gunController.EquipGun();
     }

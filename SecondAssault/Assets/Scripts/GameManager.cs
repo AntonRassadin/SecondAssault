@@ -7,6 +7,8 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour {
 
     [SerializeField] private GameObject gameOverUI;
+    [SerializeField] private GameObject EndGameUI;
+    [SerializeField] private Text scoreText;
     [SerializeField] private GameObject inGameUI;
     [SerializeField] private GameObject pauseUI;
     [SerializeField] private Image healthBar;
@@ -96,10 +98,29 @@ public class GameManager : MonoBehaviour {
         }
     }
 
+    public void EndGame()
+    {
+        EndGameUI.SetActive(true);
+        gameOver = true;
+        player.dead = true;
+        inGameUI.SetActive(false);
+        float time = Time.time;
+        int minutes = Mathf.FloorToInt(time / 60F);
+        int seconds = Mathf.FloorToInt(time - minutes * 60);
+        string timeString = string.Format("{0:0}:{1:00}", minutes, seconds);
+        scoreText.text = "Enemy Killed: "+ score + "\r\nTime = "+ timeString + " minutes";
+        Invoke("RestartLevel", 6f);
+    }
+
     public void ExitToMenu()
     {
         Time.timeScale = 1;
         SceneManager.LoadScene("MainMenu");
+    }
+
+    private void RestartLevel()
+    {
+        SceneManager.LoadScene("Game");
     }
 
     private void OnPlayerDeath()

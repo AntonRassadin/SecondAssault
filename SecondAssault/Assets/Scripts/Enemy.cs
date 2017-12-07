@@ -38,10 +38,7 @@ public class Enemy : LivingEntity {
         enemyUI.gameObject.SetActive(false);
         enemyUI.StartingHealth = startingHealth;
         enemyUI.Health = startingHealth;
-        //gunController.EquipGun();
-        //временное решение не успевает загрузиться 
-
-        StartCoroutine(EnquipGunWithDelay());
+        gunController.EquipGun();
 
         target.GetComponent<Player>().OnDeath += OnPlayerDeath;
 	}
@@ -66,7 +63,6 @@ public class Enemy : LivingEntity {
 
     private IEnumerator EnquipGunWithDelay()
     {
-        //временное решение не успевает загрузиться 
         yield return new WaitForSeconds(1);
         gunController.EquipGun();
     }
