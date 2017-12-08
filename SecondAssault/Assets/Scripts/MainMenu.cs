@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour {
 
-    [SerializeField] private AudioMixer audioMixer;
+    //[SerializeField] private AudioMixer audioMixer;
     [SerializeField] private GameObject mainMenu;
     [SerializeField] private GameObject optionsMenu;
     [SerializeField] private Slider mouseSensivitySlider;
@@ -42,7 +42,7 @@ public class MainMenu : MonoBehaviour {
         resolutionDropdown.value = PlayerPrefs.GetInt("resolution", currentResolutionIndex);
         resolutionDropdown.RefreshShownValue();
         mouseSensivitySlider.value = PlayerPrefs.GetFloat("mouse sensivity", 5);
-        volumeSlider.value = PlayerPrefs.GetFloat("volume", 80);
+        volumeSlider.value = PlayerPrefs.GetFloat("volume", .5f);
         qualityDropdown.value = PlayerPrefs.GetInt("quality", 2);
         fullscreenToggle.isOn = (PlayerPrefs.GetInt("fullscreen") == 1) ? true : false;
     }
@@ -71,9 +71,10 @@ public class MainMenu : MonoBehaviour {
 
     public void SetVolue(float volume)
     {
-       audioMixer.SetFloat("volume", volume);
-       PlayerPrefs.SetFloat("volume", volume);
-       PlayerPrefs.Save();
+        //audioMixer.SetFloat("volume", volume);
+        PlayerPrefs.SetFloat("volume", volume);
+        PlayerPrefs.Save();
+        AudioManager.instance.SetVolume();
     }
 
     public void MainMenuOpen()

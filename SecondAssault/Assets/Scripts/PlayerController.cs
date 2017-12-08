@@ -13,6 +13,9 @@ public class PlayerController : MonoBehaviour {
     private GunController gunController;
     private int shotgunAmmo;
 
+    private float gunRotationCurrentVelosityX;
+    private float gunRotationCurrentVelosityY;
+
     public int ShotgunAmmo
     {
         get
@@ -52,6 +55,7 @@ public class PlayerController : MonoBehaviour {
                 gunController.Reload();
             }
         }
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -75,7 +79,7 @@ public class PlayerController : MonoBehaviour {
             AudioClip audio = other.GetComponent<AmmoPickUp>().PickUpSound;
             if(audio != null)
             {
-                GameManager.instance.PlaySounAtPlayer(audio);
+                AudioManager.instance.PlayCLipAtPlayer(audio);
             }
             Destroy(other.gameObject);
         }else if(other.gameObject.tag == "MedKit")
@@ -87,7 +91,7 @@ public class PlayerController : MonoBehaviour {
                 AudioClip audio = other.GetComponent<MedKit>().PickUpSound;
                 if (audio != null)
                 {
-                    GameManager.instance.PlaySounAtPlayer(audio);
+                    AudioManager.instance.PlayCLipAtPlayer(audio);
                 }
                 Destroy(other.gameObject);
             }
@@ -125,8 +129,14 @@ public class PlayerController : MonoBehaviour {
         float rotationX = Input.GetAxisRaw("Mouse X") * lookSensitivity;
         Vector3 rotationInput = new Vector3(0, rotationX, 0);
         player.Rotate(rotationInput);
-
+        
         float rotationY = Input.GetAxisRaw("Mouse Y") * lookSensitivity;
         player.RotateCamera(rotationY);
+
+        //поворот оружия при повороте игрока 
+        float gunRotationX = Mathf.Clamp(Mathf.SmoothDamp(0, rotationY, ref gunRotationCurrentVelosityY, Time.deltaTime * 10), -10, 10);
+        float gunRotationY = Mathf.Clamp(Mathf.SmoothDamp(0, rotationX, ref gunRotationCurrentVelosityX, Time.deltaTime * 10), -10, 10);
+
+        gunController.MoveAnimation(new Vector3(gunRotationX, gunRotationY, 0));
     }
 }

@@ -2,6 +2,8 @@
 
 public class Door : MonoBehaviour {
 
+    [SerializeField]
+    private bool isDoorBlocked;
     private Animator anim;
 
 	private void Start () {
@@ -14,6 +16,14 @@ public class Door : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        anim.SetTrigger("OpenDoors");
+        if (!isDoorBlocked)
+        {
+            anim.SetTrigger("OpenDoors");
+        }
+    }
+
+    public void OpenDoor()
+    {
+        isDoorBlocked = false;
     }
 }

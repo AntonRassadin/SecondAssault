@@ -95,6 +95,11 @@ public class GunController : MonoBehaviour {
         }
     }
 
+    public void MoveAnimation(Vector3 rotation)
+    {
+        gunHolder.localEulerAngles = rotation;
+    }
+
     public void AddSHotgunAmmo(int ammo)
     {
         if(equippedGun.Name == "Shotgun")
@@ -139,7 +144,14 @@ public class GunController : MonoBehaviour {
                 if(equippedGun.TotalBulletAmount >= 0)
                 {
                     equippedGun.TotalBulletAmount += equippedGun.PickUpBulletAmount;
-                    GameManager.instance.PlaySounAtPlayer(equippedGun.PickUpSound);
+                    if (gunOwner == GunOwner.Player)
+                    {
+                        AudioManager.instance.PlayCLipAtPlayer(equippedGun.PickUpSound);
+                    }
+                    else
+                    {
+                        AudioManager.instance.PlayCLipAtPos(equippedGun.PickUpSound, transform.position);
+                    }
                 }
                 return;
             }

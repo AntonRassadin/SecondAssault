@@ -24,9 +24,6 @@ public class Gun : MonoBehaviour {
     [SerializeField] private AudioClip reloadAudioClip;
     [SerializeField] private AudioClip pickUpSound;
 
-    [SerializeField] private AudioSource barrelAudioSource;
-    
-
     [Header("Parameters")]
     [SerializeField] private float damage = 10f;
     [SerializeField] private float bulletSpeed = 50f;
@@ -194,7 +191,7 @@ public class Gun : MonoBehaviour {
 
             Recoil();
 
-            barrelAudioSource.PlayOneShot(shotSound);
+            AudioManager.instance.PlayCLipAtPos(shotSound, barrel.position);
 
             magazineBulletsCount--;
             UpdateAmmoUI();
@@ -249,7 +246,14 @@ public class Gun : MonoBehaviour {
         if(totalBulletAmount != 0)
         {
             inReload = true;
-            barrelAudioSource.PlayOneShot(reloadAudioClip);
+            if (playerGun)
+            {
+                AudioManager.instance.PlayCLipAtPlayer(reloadAudioClip);
+            }
+            else
+            {
+                AudioManager.instance.PlayCLipAtPos(reloadAudioClip, transform.position);
+            }
             StartCoroutine(AnimateReload());
             yield return new WaitForSeconds(reloadTime);
             inReload = false;

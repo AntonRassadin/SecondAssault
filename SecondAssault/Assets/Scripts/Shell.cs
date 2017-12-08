@@ -34,7 +34,9 @@ public class Shell : MonoBehaviour {
     {
         yield return new WaitForSeconds(.5f);
         int randomIndex = Random.Range(0, audioClips.Length - 1);
-        audioSource.PlayOneShot(audioClips[randomIndex]);
+        //AudioManager.instance.PlayCLipAtPos(audioClips[randomIndex], transform.position);
+        float volume = PlayerPrefs.GetFloat("volume", .5f);
+        audioSource.PlayOneShot(audioClips[randomIndex], volume);
     }
 
     private IEnumerator Fade()

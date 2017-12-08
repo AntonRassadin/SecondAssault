@@ -27,6 +27,8 @@ public class Enemy : LivingEntity {
     private float delayCounter;
     private EnemyUI enemyUI;
     private bool playerDead;
+    private float refreshRate = .2f;
+    private float timeCounter = 0;
 
     // Use this for initialization
     protected override void Start () {
@@ -156,8 +158,13 @@ public class Enemy : LivingEntity {
 
     private void StartMoveToTarget()
     {
-        pathfinder.SetDestination(target.position);
-        pathfinder.isStopped = false;
+        timeCounter += Time.deltaTime;
+        if (timeCounter > refreshRate)
+        {
+            pathfinder.SetDestination(target.position);
+            pathfinder.isStopped = false;
+            timeCounter = 0;
+        }
     }
 
     private void StopMoveToTarget()

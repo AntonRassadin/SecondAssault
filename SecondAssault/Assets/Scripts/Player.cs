@@ -99,7 +99,7 @@ public class Player : LivingEntity {
         if (isOnFire)
         {
             timeSinceLastHit += Time.deltaTime;
-            if(timeSinceLastHit > 5)
+            if(timeSinceLastHit > 3)
             {
                 isOnFire = false;
                 timeSinceLastHit = 0;

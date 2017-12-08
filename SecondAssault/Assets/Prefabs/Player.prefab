@@ -54,7 +54,6 @@ GameObject:
   - component: {fileID: 114603952492343096}
   - component: {fileID: 114928985861786348}
   - component: {fileID: 114982448464397586}
-  - component: {fileID: 82414074263326112}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -73,6 +72,7 @@ GameObject:
   - component: {fileID: 20883261285489248}
   - component: {fileID: 124978139654977202}
   - component: {fileID: 81639784112903384}
+  - component: {fileID: 114462416893922122}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -134,7 +134,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1180614779134790}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.481, y: -0.098, z: 0.852}
+  m_LocalPosition: {x: 0.481, y: -0.236, z: 0.818}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4863758327507414}
@@ -160,7 +160,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1239020652201520}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -27.7, y: 1, z: -31.12}
+  m_LocalPosition: {x: -27.8, y: 1, z: -31.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4863758327507414}
@@ -329,87 +329,18 @@ AudioListener:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1686059861339844}
   m_Enabled: 1
---- !u!82 &82414074263326112
-AudioSource:
+--- !u!114 &114462416893922122
+MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1239020652201520}
+  m_GameObject: {fileID: 1686059861339844}
   m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 24300002, guid: 6f4bac186fb390247a8511d70dc57de1,
-    type: 2}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 0.322
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    - serializedVersion: 2
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff26db721962cdf4a8edcdfa9a767d2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  profile: {fileID: 11400000, guid: 4f2dbbbaced439e438194ecdbf575666, type: 2}
 --- !u!114 &114603952492343096
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -434,10 +365,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a19ba3f240a0abc4aaf283834c01b4cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 100
+  startingHealth: 10000
   cam: {fileID: 20883261285489248}
   cameraRotationLimit: 85
-  timeToAutoRegenHealth: 5
+  timeToAutoRegenHealth: 2
   bloodScreen: {fileID: 0}
   bloodScreenTime: 0.5
   bloodScreenAlphaPercent: 0.35

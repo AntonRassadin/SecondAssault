@@ -16,13 +16,12 @@ public class GameManager : MonoBehaviour {
     [SerializeField] private Color healthBarLowColor;
     [SerializeField] private float healthBarBlinkTime = .1f;
     [SerializeField] private Text ammo;
-    
+    [SerializeField] private Door blockedDoor;
 
     [Header("Guns")][SerializeField] public Gun[] guns;
     private Dictionary<string, Gun> allGuns;
 
     public static GameManager instance = null;
-    private AudioSource playerAudioSource;
 
     private Color healthBarOriginalColor;
     private float healthbarWidth;
@@ -53,7 +52,6 @@ public class GameManager : MonoBehaviour {
         Enemy.OnDeathStatic += OnEnemyDeath;
         player = FindObjectOfType<Player>();
         player.OnDeath += OnPlayerDeath;
-        playerAudioSource = player.GetComponent<AudioSource>();
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Confined;
         healthbarWidth = healthBar.rectTransform.sizeDelta.x;
@@ -112,6 +110,11 @@ public class GameManager : MonoBehaviour {
         Invoke("RestartLevel", 6f);
     }
 
+    public void OpenDoorA()
+    {
+        blockedDoor.OpenDoor();
+    }
+
     public void ExitToMenu()
     {
         Time.timeScale = 1;
@@ -129,11 +132,6 @@ public class GameManager : MonoBehaviour {
         inGameUI.SetActive(false);
         Invoke("SetGameOverUIActive", 1f);
         //player.OnDeath -= OnPlayerDeath;
-    }
-
-    public void PlaySounAtPlayer(AudioClip audioCLip)
-    {
-        playerAudioSource.PlayOneShot(audioCLip);
     }
 
     private void SetGameOverUIActive()

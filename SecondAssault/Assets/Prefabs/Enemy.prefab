@@ -90,15 +90,15 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1874716856053864}
-  m_LocalRotation: {x: -0, y: 0.8496835, z: -0, w: 0.52729297}
-  m_LocalPosition: {x: -26.42, y: 1.476, z: 6.34}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4044338726330558}
   - {fileID: 224821851483446016}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 476.355, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4044338726330558
 Transform:
   m_ObjectHideFlags: 1
@@ -205,7 +205,7 @@ MonoBehaviour:
   obstacleLayerMask:
     serializedVersion: 2
     m_Bits: 512
-  deathEffect: {fileID: 198458674905139838, guid: b96f0df90ebdcdc4689918676d307ec1,
+  deathEffect: {fileID: 198090286192453698, guid: 851991116d99fb948ab3d664877e76f0,
     type: 2}
   dropDownItems:
   - {fileID: 1820458401464568, guid: 5aa9af5018ff52145bb756e08595ab32, type: 2}
@@ -251,9 +251,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   layerMask:
     serializedVersion: 2
-    m_Bits: 1536
+    m_Bits: 3584
   gunOwner: 0
-  defaultGun: {fileID: 114417945148893728, guid: 1ca8fb4557fe3194c8ed7d1c439fdcf6,
+  defaultGun: {fileID: 114417945148893728, guid: a4a1bee75b2fd6e4c8ba53384bbf2245,
     type: 2}
   gunHolder: {fileID: 4044338726330558}
 --- !u!114 &114960045445044148

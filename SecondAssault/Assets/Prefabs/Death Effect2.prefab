@@ -9,46 +9,46 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1809020175932746}
+  m_RootGameObject: {fileID: 1244050801097748}
   m_IsPrefabParent: 1
---- !u!1 &1809020175932746
+--- !u!1 &1244050801097748
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4103697492300158}
-  - component: {fileID: 198095529767514200}
-  - component: {fileID: 199751682181588582}
+  - component: {fileID: 4779062258440630}
+  - component: {fileID: 198090286192453698}
+  - component: {fileID: 199553652968197946}
   m_Layer: 0
-  m_Name: Death Effect
+  m_Name: Death Effect2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4103697492300158
+--- !u!4 &4779062258440630
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1809020175932746}
-  m_LocalRotation: {x: -0.5215119, y: 0.47751984, z: -0.47752, w: 0.52151203}
-  m_LocalPosition: {x: -0.35, y: 1.2, z: 14.763}
+  m_GameObject: {fileID: 1244050801097748}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -5.043, y: 90.00001, z: -90.00001}
---- !u!198 &198095529767514200
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!198 &198090286192453698
 ParticleSystem:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1809020175932746}
+  m_GameObject: {fileID: 1244050801097748}
   serializedVersion: 5
-  lengthInSec: 0.36
+  lengthInSec: 0.2
   simulationSpeed: 1
   stopAction: 0
   looping: 0
@@ -101,14 +101,14 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -1132628870
+  randomSeed: -189085171
   InitialModule:
     serializedVersion: 3
     enabled: 1
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 4.6
+      scalar: 2.63
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -149,7 +149,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 9.7
+      scalar: 15.2
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -191,7 +191,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 1, b: 1, a: 1}
+      maxColor: {r: 0.75735295, g: 0, b: 0, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -253,7 +253,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.19
+      scalar: 0.05
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -503,7 +503,7 @@ ParticleSystem:
     gravityModifier:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 0.03
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -545,14 +545,14 @@ ParticleSystem:
     serializedVersion: 5
     enabled: 1
     type: 4
-    angle: 5.148165
+    angle: 18.082754
     length: 5
     boxThickness: {x: 0, y: 0, z: 0}
     radiusThickness: 1
     donutRadius: 0.2
     m_Position: {x: 0, y: 0, z: 0}
-    m_Rotation: {x: 0, y: 0, z: 0}
-    m_Scale: {x: 1.81, y: 0.82, z: 0.71}
+    m_Rotation: {x: -4.42, y: 0, z: 0}
+    m_Scale: {x: 0.7, y: 1.36, z: 0.71}
     placementMode: 0
     m_Mesh: {fileID: 0}
     m_MeshRenderer: {fileID: 0}
@@ -566,7 +566,7 @@ ParticleSystem:
     sphericalDirectionAmount: 0.06
     randomPositionAmount: 0
     radius:
-      value: 0.48859727
+      value: 0.36505812
       mode: 0
       spread: 0
       speed:
@@ -780,22 +780,10 @@ ParticleSystem:
           outSlope: -2
           tangentMode: 0
         - serializedVersion: 2
-          time: 0.3987388
-          value: 0.16907662
-          inSlope: -0.5224347
-          outSlope: -0.5224347
-          tangentMode: 0
-        - serializedVersion: 2
-          time: 0.9388428
-          value: 0.1097641
-          inSlope: -0.10303691
-          outSlope: -0.10303691
-          tangentMode: 0
-        - serializedVersion: 2
           time: 1
           value: 0
-          inSlope: -1.0260204
-          outSlope: -1.0260204
+          inSlope: 0
+          outSlope: 0
           tangentMode: 0
         m_PreInfinity: 2
         m_PostInfinity: 2
@@ -2458,7 +2446,7 @@ ParticleSystem:
     m_Dampen:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.2
+      scalar: 1
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -2499,7 +2487,7 @@ ParticleSystem:
     m_Bounce:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.56
+      scalar: 0.62
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -3391,13 +3379,13 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
---- !u!199 &199751682181588582
+--- !u!199 &199553652968197946
 ParticleSystemRenderer:
   serializedVersion: 4
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1809020175932746}
+  m_GameObject: {fileID: 1244050801097748}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -3406,7 +3394,7 @@ ParticleSystemRenderer:
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
   m_Materials:
-  - {fileID: 2100000, guid: b810ca1521f0d1d40a53bc535a5c55bb, type: 2}
+  - {fileID: 2100000, guid: 2aae0487451a916479600f4bf2bf030a, type: 2}
   - {fileID: 2100000, guid: b810ca1521f0d1d40a53bc535a5c55bb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -3440,7 +3428,7 @@ ParticleSystemRenderer:
   m_Pivot: {x: 0, y: 0, z: 0}
   m_UseCustomVertexStreams: 0
   m_VertexStreams: 00010304
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
   m_Mesh1: {fileID: 0}
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
