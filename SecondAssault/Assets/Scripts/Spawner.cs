@@ -1,7 +1,5 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Audio;
 
 public class Spawner : MonoBehaviour {
 
@@ -88,7 +86,7 @@ public class Spawner : MonoBehaviour {
                 Enemy newEnemy = Instantiate(enemy, spawnPoint.position + Vector3.up, spawnPoint.rotation, spawnPoint) as Enemy;
                 newEnemy.OnDeath += OnEnemyDeath;
                 Destroy(Instantiate(spawnEffect, spawnPoint.position, Quaternion.identity), .7f);
-                AudioManager.instance.PlayCLipAtPos(spawnAudio, spawnPoint.position);
+                AudioManager.instance.PlayClipWIthVolume(spawnAudio, spawnPoint.GetComponent<AudioSource>());
                 yield return new WaitForSeconds(timeBetweenEnemySpawn);
             }
         }

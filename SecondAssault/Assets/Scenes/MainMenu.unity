@@ -202,6 +202,16 @@ Prefab:
       propertyPath: m_Name
       value: Shell (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 82034849619049850, guid: 00557c68758c0a74aa66b9547f287f24,
+        type: 2}
+      propertyPath: MaxDistance
+      value: 0.79
+      objectReference: {fileID: 0}
+    - target: {fileID: 82034849619049850, guid: 00557c68758c0a74aa66b9547f287f24,
+        type: 2}
+      propertyPath: MinDistance
+      value: 0.24
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 00557c68758c0a74aa66b9547f287f24, type: 2}
   m_IsPrefabParent: 0

@@ -8777,7 +8777,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 934596045}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -353.7, y: -326.89383, z: 0}
+  m_LocalPosition: {x: -353.7, y: -326.88846, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1598328541}
@@ -10860,7 +10860,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1239867259}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 553.87, y: -328.064, z: 0}
+  m_LocalPosition: {x: 553.87, y: -328.05862, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1247490957}
@@ -11979,33 +11979,28 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114145338926690442, guid: 8bb103aea4a7cf44a8100de10763b245,
+    - target: {fileID: 82520244112755550, guid: 8bb103aea4a7cf44a8100de10763b245,
         type: 2}
-      propertyPath: timeBetweenEnemySpawn
-      value: 1.5
+      propertyPath: MaxDistance
+      value: 20.06
       objectReference: {fileID: 0}
-    - target: {fileID: 114145338926690442, guid: 8bb103aea4a7cf44a8100de10763b245,
+    - target: {fileID: 82818816193561426, guid: 8bb103aea4a7cf44a8100de10763b245,
         type: 2}
-      propertyPath: numberOfWawes
-      value: 3
+      propertyPath: MaxDistance
+      value: 20.06
       objectReference: {fileID: 0}
-    - target: {fileID: 114145338926690442, guid: 8bb103aea4a7cf44a8100de10763b245,
+    - target: {fileID: 82451843134267818, guid: 8bb103aea4a7cf44a8100de10763b245,
         type: 2}
-      propertyPath: timeBetweenWawes
-      value: 1.5
+      propertyPath: MaxDistance
+      value: 20.06
       objectReference: {fileID: 0}
-    - target: {fileID: 114145338926690442, guid: 8bb103aea4a7cf44a8100de10763b245,
+    - target: {fileID: 82976758090987116, guid: 8bb103aea4a7cf44a8100de10763b245,
         type: 2}
-      propertyPath: spawnEffect
-      value: 
-      objectReference: {fileID: 1803681029135402, guid: 208e33531e0e377448ef86c7ab1a8952,
-        type: 2}
-    - target: {fileID: 114145338926690442, guid: 8bb103aea4a7cf44a8100de10763b245,
-        type: 2}
-      propertyPath: spawnAudio
-      value: 
-      objectReference: {fileID: 8300000, guid: 63db8242014fbdb4f839d90a1af7409d, type: 3}
-    m_RemovedComponents: []
+      propertyPath: MaxDistance
+      value: 20.06
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 82864563511724088, guid: 8bb103aea4a7cf44a8100de10763b245, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 8bb103aea4a7cf44a8100de10763b245, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1362015119 stripped
@@ -17557,8 +17552,8 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2004067811}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 390.5, y: 219.5, z: 0}
-  m_LocalScale: {x: 0.61015624, y: 0.61015624, z: 0.61015624}
+  m_LocalPosition: {x: 382.5, y: 215, z: 0}
+  m_LocalScale: {x: 0.59765625, y: 0.59765625, z: 0.59765625}
   m_Children:
   - {fileID: 1247490957}
   - {fileID: 746043776}

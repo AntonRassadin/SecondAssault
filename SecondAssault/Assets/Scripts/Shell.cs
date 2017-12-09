@@ -22,7 +22,10 @@ public class Shell : MonoBehaviour {
         shellRigidbody.AddTorque(Random.insideUnitSphere);
 
         StartCoroutine(Fade());
-        StartCoroutine(PlaySound());
+        if (audioSource.isActiveAndEnabled)
+        {
+            StartCoroutine(PlaySound());
+        }
     }
 	
 	// Update is called once per frame
@@ -34,7 +37,7 @@ public class Shell : MonoBehaviour {
     {
         yield return new WaitForSeconds(.5f);
         int randomIndex = Random.Range(0, audioClips.Length - 1);
-        //AudioManager.instance.PlayCLipAtPos(audioClips[randomIndex], transform.position);
+        //AudioManager.instance.PlayClipWIthVolume(audioClips[randomIndex], transform.position);
         float volume = PlayerPrefs.GetFloat("volume", .5f);
         audioSource.PlayOneShot(audioClips[randomIndex], volume);
     }

@@ -17,12 +17,13 @@ public class AudioManager : MonoBehaviour {
         {
             Destroy(gameObject);
         }
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
 
         if (FindObjectOfType<Player>() != null)
         {
             playerAudio = FindObjectOfType<Player>().GetComponent<AudioSource>();
         }
+        SetVolume();
     }
 
     private void Start () {
@@ -33,14 +34,15 @@ public class AudioManager : MonoBehaviour {
 
     }
 
-    public void PlayCLipAtPos(AudioClip clip, Vector3 pos)
+    public void PlayClipWIthVolume(AudioClip clip, AudioSource audioSource)
     {
-        AudioSource.PlayClipAtPoint(clip, pos, volume);
+
+        audioSource.PlayOneShot(clip, volume);
     }
 
-    public void PlayCLipAtPlayer(AudioClip CLip)
+    public void PlayCLipAtPlayer(AudioClip cLip)
     {
-        playerAudio.PlayOneShot(CLip, volume);
+        playerAudio.PlayOneShot(cLip, volume);
     }
 
     public void SetVolume()

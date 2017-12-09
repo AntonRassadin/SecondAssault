@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 114176277276147594}
   - component: {fileID: 82034849619049850}
   m_Layer: 0
-  m_Name: Shell
+  m_Name: EnemyShell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -39,7 +39,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1798123089644218}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -3.6393216, y: -0.0000053698686, z: -2.5896676}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.046179477, y: 0.04617946, z: 0.04617946}
   m_Children: []
   m_Father: {fileID: 0}
@@ -120,8 +120,8 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 58
   DopplerLevel: 0.08
-  MinDistance: 0.23
-  MaxDistance: 2.55
+  MinDistance: 0.11
+  MaxDistance: 0.98
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0

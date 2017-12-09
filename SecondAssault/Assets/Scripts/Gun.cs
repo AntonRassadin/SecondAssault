@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
-
+[RequireComponent(typeof(AudioSource))]
 public class Gun : MonoBehaviour {
 
     public event System.Action OnAmmoEmpty;
@@ -41,6 +41,7 @@ public class Gun : MonoBehaviour {
     [SerializeField] private Vector2 recoilAngleMinMax = new Vector2(2f, 5f);
     [SerializeField] private Vector2 recoilKickMinMax = new Vector2(.05f, .2f);
 
+    private AudioSource audioSource;
     private LayerMask layerMask;
     private float nextShotTime;
     private bool playerGun;
@@ -100,6 +101,7 @@ public class Gun : MonoBehaviour {
 
     private void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         StartCoroutine(Reload());
         //magazineBulletsCount = magazineBulletAmount;
         UpdateAmmoUI();
@@ -191,7 +193,7 @@ public class Gun : MonoBehaviour {
 
             Recoil();
 
-            AudioManager.instance.PlayCLipAtPos(shotSound, barrel.position);
+            PlaySound(shotSound);
 
             magazineBulletsCount--;
             UpdateAmmoUI();
@@ -200,6 +202,11 @@ public class Gun : MonoBehaviour {
                 StartCoroutine(Reload());
             }
         }
+    }
+
+    public void PlaySound(AudioClip clip)
+    {
+        AudioManager.instance.PlayClipWIthVolume(clip, audioSource);
     }
 
     private void TakeShot(Vector3 barrelPosition, Vector3 barrelForward)
@@ -246,14 +253,7 @@ public class Gun : MonoBehaviour {
         if(totalBulletAmount != 0)
         {
             inReload = true;
-            if (playerGun)
-            {
-                AudioManager.instance.PlayCLipAtPlayer(reloadAudioClip);
-            }
-            else
-            {
-                AudioManager.instance.PlayCLipAtPos(reloadAudioClip, transform.position);
-            }
+            PlaySound(reloadAudioClip);
             StartCoroutine(AnimateReload());
             yield return new WaitForSeconds(reloadTime);
             inReload = false;

@@ -144,14 +144,7 @@ public class GunController : MonoBehaviour {
                 if(equippedGun.TotalBulletAmount >= 0)
                 {
                     equippedGun.TotalBulletAmount += equippedGun.PickUpBulletAmount;
-                    if (gunOwner == GunOwner.Player)
-                    {
-                        AudioManager.instance.PlayCLipAtPlayer(equippedGun.PickUpSound);
-                    }
-                    else
-                    {
-                        AudioManager.instance.PlayCLipAtPos(equippedGun.PickUpSound, transform.position);
-                    }
+                    equippedGun.PlaySound(equippedGun.PickUpSound);
                 }
                 return;
             }
