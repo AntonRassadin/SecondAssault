@@ -29,6 +29,7 @@ public class Enemy : LivingEntity {
     private bool playerDead;
     private float refreshRate = .2f;
     private float timeCounter = 0;
+    private bool inCollision;
 
     // Use this for initialization
     protected override void Start () {
@@ -73,12 +74,48 @@ public class Enemy : LivingEntity {
     {
         targetSpotted = true;
         base.TakeDamage(damage);
+        delayCounter = 0;
+        //эффект отбрасывания врага
+        StartCoroutine(ThrowFromHit(hitDirection));
+        //transform.position = transform.position + hitDirection * 4;
         if (damage >= health)
         {
             Destroy(Instantiate(deathEffect.gameObject, hitPoint, Quaternion.FromToRotation(Vector3.forward, hitDirection)) as GameObject, deathEffect.main.startLifetime.constant);
         }
         enemyUI.gameObject.SetActive(true);
         enemyUI.Health = health;
+    }
+
+    private IEnumerator ThrowFromHit(Vector3 hitDirection)
+    {
+        float time = 1f;
+        float speed = 1 / time * Time.deltaTime;
+        float percent = 0;
+        Vector3 oldPosition = transform.position;
+        Vector3 newPosition = transform.position + hitDirection * 4;
+        while (percent < 1) {
+            percent += speed;
+            if (!inCollision)
+            {
+                transform.position = Vector3.Lerp(oldPosition, newPosition, percent);
+            }
+            else
+            {
+                yield break;
+            }
+            yield return null;
+        }
+    }
+
+    
+    private void OnCollisionEnter(Collision collision)
+    {
+        inCollision = true;
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        inCollision = false;
     }
 
     public override void Die()

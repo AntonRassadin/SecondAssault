@@ -9,6 +9,7 @@ TagManager:
   - ShotgunAmmo
   - MedKit
   - EndGame
+  - Floor
   layers:
   - Default
   - TransparentFX
