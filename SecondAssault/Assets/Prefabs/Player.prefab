@@ -446,7 +446,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a19ba3f240a0abc4aaf283834c01b4cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 10000
+  startingHealth: 100
   cam: {fileID: 20883261285489248}
   cameraRotationLimit: 85
   timeToAutoRegenHealth: 2

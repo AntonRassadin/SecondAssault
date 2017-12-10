@@ -75,9 +75,7 @@ public class Enemy : LivingEntity {
         targetSpotted = true;
         base.TakeDamage(damage);
         delayCounter = 0;
-        //эффект отбрасывания врага
         StartCoroutine(ThrowFromHit(hitDirection));
-        //transform.position = transform.position + hitDirection * 4;
         if (damage >= health)
         {
             Destroy(Instantiate(deathEffect.gameObject, hitPoint, Quaternion.FromToRotation(Vector3.forward, hitDirection)) as GameObject, deathEffect.main.startLifetime.constant);
@@ -88,6 +86,7 @@ public class Enemy : LivingEntity {
 
     private IEnumerator ThrowFromHit(Vector3 hitDirection)
     {
+        //эффект отбрасывания врага
         float time = 1f;
         float speed = 1 / time * Time.deltaTime;
         float percent = 0;
