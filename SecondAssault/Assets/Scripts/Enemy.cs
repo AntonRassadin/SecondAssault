@@ -107,7 +107,7 @@ public class Enemy : LivingEntity {
     }
 
     
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionStay(Collision collision)
     {
         inCollision = true;
     }

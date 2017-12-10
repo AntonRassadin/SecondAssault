@@ -129,8 +129,8 @@ public class Gun : MonoBehaviour {
             nextShotTime = Time.time + msBetweenShots / 1000;
             gunEffects.Activate();
 
-            Collider[] initialCollisions = Physics.OverlapSphere(transform.position, .7f, layerMask, QueryTriggerInteraction.Ignore);
-
+            Collider[] initialCollisions = Physics.OverlapSphere(barrel.position, .3f, layerMask, QueryTriggerInteraction.Ignore);
+            
             if (initialCollisions.Length == 0)
             {
                 // оружие не в обьекте 
@@ -342,17 +342,18 @@ public class Gun : MonoBehaviour {
 
     private void OnDrawGizmos()
     {
+        //Gizmos.DrawSphere(barrel.position, .3f);
         if (barrel.transform.childCount > 0)
         {
             foreach (Transform child in barrel.transform)
             {
                 //Gizmos.DrawLine(child.position, child.position + child.forward  * 10);
                 Gizmos.DrawRay(child.position, child.forward * 20);
-                
-                //Gizmos.DrawSphere(transform.position, .7f);
+
                 //Ray cameraRay = Camera.main.ScreenPointToRay(new Vector3(Screen.width / 2f, Screen.height / 2f, 0));
                 //Gizmos.DrawRay(cameraRay.origin, child.forward * 20);
                 //Debug.DrawRay(cameraRay.origin, cameraRay.direction * 500, Color.red);
+                
             }
         }
     }

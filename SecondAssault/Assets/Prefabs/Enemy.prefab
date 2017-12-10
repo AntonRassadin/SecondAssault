@@ -57,7 +57,7 @@ GameObject:
   - component: {fileID: 195816885287701972}
   - component: {fileID: 114627776789716254}
   - component: {fileID: 114946838174515874}
-  - component: {fileID: 54347653103182524}
+  - component: {fileID: 54182176867843076}
   m_Layer: 11
   m_Name: Enemy
   m_TagString: Enemy
@@ -107,7 +107,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1853674815146030}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.406, y: 0, z: 0.733}
+  m_LocalPosition: {x: 0.4, y: 0.066, z: 0.62}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4040930406782016}
@@ -154,7 +154,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1874716856053864}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
---- !u!54 &54347653103182524
+--- !u!54 &54182176867843076
 Rigidbody:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -167,7 +167,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 126
   m_CollisionDetection: 1
 --- !u!114 &114180520722031418
 MonoBehaviour:
@@ -215,7 +215,7 @@ MonoBehaviour:
   startingHealth: 30
   viewDistance: 22.3
   shootDistance: 15
-  shootDelay: 0.5
+  shootDelay: 0.15
   viewAngle: 120
   rotationSpeed: 3
   obstacleLayerMask:
