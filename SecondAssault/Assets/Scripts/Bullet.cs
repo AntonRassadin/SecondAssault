@@ -3,7 +3,7 @@
 public class Bullet : MonoBehaviour {
 
     // Use this for initialization
-    
+    [SerializeField] LayerMask collideWithLayerMask;
     private float speed = 20f;
     public float Speed { get {return speed; } set { speed = value; } }
     private void Start () {
@@ -29,7 +29,7 @@ public class Bullet : MonoBehaviour {
     private void CheckCollisions()
     {
         Ray ray = new Ray(transform.position, transform.up);
-        if (Physics.Raycast(ray, speed * Time.deltaTime))
+        if (Physics.Raycast(ray, speed * Time.deltaTime, collideWithLayerMask, QueryTriggerInteraction.Ignore))
         {
             Destroy(gameObject);
         }

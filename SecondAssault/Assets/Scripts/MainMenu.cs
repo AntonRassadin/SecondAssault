@@ -51,6 +51,7 @@ public class MainMenu : MonoBehaviour {
     {
         Resolution resolution = resolutions[resolutionIndex];
         Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
+        Cursor.lockState = CursorLockMode.None;
         PlayerPrefs.SetInt("resolution", resolutionIndex);
         PlayerPrefs.Save();
     }
