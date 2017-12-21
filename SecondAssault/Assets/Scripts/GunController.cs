@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public enum GunOwner { Enemy, Player }
 
@@ -158,6 +159,11 @@ public class GunController : MonoBehaviour {
             equippedGun.OnAmmoEmpty += OnAmmoEmpty;
             SetChildLayer(LayerMask.NameToLayer("Gun"), equippedGun.gameObject);
         }
+    }
+
+    internal void DestroyGun()
+    {
+        Destroy(equippedGun.gameObject);
     }
 
     private void OnAmmoEmpty()

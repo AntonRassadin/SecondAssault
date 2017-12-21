@@ -342,7 +342,7 @@ public class Gun : MonoBehaviour {
 
     private void OnDrawGizmos()
     {
-        Gizmos.DrawSphere(barrel.position, .3f);
+        //Gizmos.DrawSphere(barrel.position, .3f);
         if (barrel.transform.childCount > 0)
         {
             foreach (Transform child in barrel.transform)

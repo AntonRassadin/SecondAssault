@@ -4,6 +4,7 @@ using UnityEngine.AI;
 
 [RequireComponent(typeof(GunController))]
 [RequireComponent(typeof(NavMeshAgent))]
+[RequireComponent(typeof(Animator))]
 public class Enemy : LivingEntity {
 
     public static event System.Action OnDeathStatic;
@@ -19,9 +20,18 @@ public class Enemy : LivingEntity {
     [SerializeField][Range(0, 1)][Tooltip("вероятность выпадения патронов аптечек - (1 - всегда, 0 - никогда)")]
     private float dropDownRate = .2f;
 
+    [SerializeField] private AudioClip detectSound;
+    [SerializeField] private bool alwaysPlayDetectSound;
+    [SerializeField] private AudioClip deathSound;
+    [SerializeField] private AudioClip deathFullSound;
+    [SerializeField] private float dissapearSpeed = .05f;
+
+    private AudioSource audioSource;
     private GunController gunController;
     private NavMeshAgent pathfinder;
     private Transform target;
+    private Rigidbody rb;
+    private CapsuleCollider capsuleCol;
     private bool targetSpotted;
     private bool targetInView;
     private float delayCounter;
@@ -30,12 +40,18 @@ public class Enemy : LivingEntity {
     private float refreshRate = .2f;
     private float timeCounter = 0;
     private bool inCollision;
-
+    private Animator anim;
+    private bool detectSoundPlayed;
+    private bool isDead;
     // Use this for initialization
     protected override void Start () {
         base.Start();
         gunController = GetComponent<GunController>();
+        anim = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
         pathfinder = GetComponent<NavMeshAgent>();
+        rb = GetComponent<Rigidbody>();
+        capsuleCol = GetComponent<CapsuleCollider>();
         target = GameObject.FindGameObjectWithTag("Player").transform;
         enemyUI = GetComponentInChildren<EnemyUI>();
         enemyUI.gameObject.SetActive(false);
@@ -48,13 +64,34 @@ public class Enemy : LivingEntity {
 	
 	// Update is called once per frame
 	void Update () {
-        if (playerDead == false && !GameManager.instance.IsGameInPause)
+        if (!isDead)
         {
-            LookForPlayer();
-        }
-        else
-        {
-            StopMoveToTarget();
+            if (playerDead == false && !GameManager.instance.IsGameInPause)
+            {
+                LookForPlayer();
+            }
+            else
+            {
+                StopMoveToTarget();
+            }
+
+            if (targetSpotted && !detectSoundPlayed)
+            {
+                detectSoundPlayed = true;
+                if (alwaysPlayDetectSound)
+                {
+                    AudioManager.instance.PlayClipWIthVolume(detectSound, audioSource);
+                }
+                else
+                {
+                    int random = Random.Range(0, 3);
+                    if (random == 1)
+                    {
+                        AudioManager.instance.PlayClipWIthVolume(detectSound, audioSource);
+                    }
+                }
+
+            }
         }
 
     }
@@ -72,16 +109,18 @@ public class Enemy : LivingEntity {
 
     public override void TakeHit(float damage, Vector3 hitPoint, Vector3 hitDirection)
     {
-        targetSpotted = true;
-        base.TakeDamage(damage);
-        delayCounter = 0;
-        StartCoroutine(ThrowFromHit(hitDirection));
-        if (damage >= health)
-        {
-            Destroy(Instantiate(deathEffect.gameObject, hitPoint, Quaternion.FromToRotation(Vector3.forward, hitDirection)) as GameObject, deathEffect.main.startLifetime.constant);
+        if(!isDead){
+            targetSpotted = true;
+            base.TakeDamage(damage);
+            delayCounter = 0;
+            StartCoroutine(ThrowFromHit(hitDirection));
+            if (damage >= health)
+            {
+                Destroy(Instantiate(deathEffect.gameObject, hitPoint, Quaternion.FromToRotation(Vector3.forward, hitDirection)) as GameObject, deathEffect.main.startLifetime.constant);
+            }
+            enemyUI.gameObject.SetActive(true);
+            enemyUI.Health = health;
         }
-        enemyUI.gameObject.SetActive(true);
-        enemyUI.Health = health;
     }
 
     private IEnumerator ThrowFromHit(Vector3 hitDirection)
@@ -124,6 +163,22 @@ public class Enemy : LivingEntity {
             OnDeathStatic();
         }
         base.Die();
+        isDead = true;
+        rb.isKinematic = true;
+        capsuleCol.enabled = false;
+        pathfinder.enabled = false;
+        int random = Random.Range(0, 3);
+        if (random == 1)
+        {
+            AudioManager.instance.PlayClipWIthVolume(deathFullSound, audioSource);
+        }
+        else
+        {
+            AudioManager.instance.PlayClipWIthVolume(deathSound, audioSource);
+        }
+        anim.SetTrigger("IsDead");
+        gunController.DestroyGun();
+
         if (dropDownItems.Length > 0)
         {
             if (dropDownRate != 0)
@@ -136,6 +191,21 @@ public class Enemy : LivingEntity {
                     Instantiate(dropDownItems[index], position, Quaternion.identity);
                 }
             }
+
+        }
+
+        StartCoroutine(Death());
+    }
+
+    private IEnumerator Death()
+    {
+        yield return new WaitForSeconds(5);
+
+        float speed = dissapearSpeed * Time.deltaTime;
+        while (transform.position.y > -.5f)
+        {
+            transform.Translate(Vector3.down * speed);
+            yield return null;
         }
         Destroy(gameObject);
     }
@@ -148,15 +218,15 @@ public class Enemy : LivingEntity {
 
     private void LookForPlayer()
     {
+        if (targetSpotted == true)
+        {
+            StartMoveToTarget();
+        }
+
         if (Vector3.Distance(transform.position, target.position) < viewDistance)
         {
             Vector3 direction = (target.position - transform.position).normalized;
             float angleBetween = Vector3.Angle(transform.forward, direction);
-
-            if(targetSpotted == true)
-            {
-                StartMoveToTarget();
-            }
 
             if (angleBetween < viewAngle / 2)
             {
@@ -186,7 +256,12 @@ public class Enemy : LivingEntity {
                     }
                     Quaternion lookRotation = Quaternion.LookRotation(direction);
                     transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * rotationSpeed);
+                    if(Mathf.Abs(Quaternion.Angle(transform.rotation, lookRotation)) > 10)
+                    {
+                        anim.SetBool("IsWalking", true);
+                    }
                 }
+
             }
         }
 
@@ -197,6 +272,7 @@ public class Enemy : LivingEntity {
         timeCounter += Time.deltaTime;
         if (timeCounter > refreshRate)
         {
+            anim.SetBool("IsWalking", true);
             pathfinder.SetDestination(target.position);
             pathfinder.isStopped = false;
             timeCounter = 0;
@@ -205,6 +281,7 @@ public class Enemy : LivingEntity {
 
     private void StopMoveToTarget()
     {
+        anim.SetBool("IsWalking", false);
         pathfinder.isStopped = true;
     }
 
