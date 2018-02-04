@@ -1119,7 +1119,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingHealth: 30
-  viewDistance: 15
+  viewDistance: 18.37
   shootDistance: 5
   shootDelay: 0.15
   viewAngle: 120
@@ -1134,6 +1134,7 @@ MonoBehaviour:
   - {fileID: 1572613303913952, guid: e71037e756d398543ae20a49378b00c9, type: 2}
   dropDownRate: 0.506
   detectSound: {fileID: 8300000, guid: 9602c6e7ef06bdf47b8fc10885483f2b, type: 3}
+  alwaysPlayDetectSound: 0
   deathSound: {fileID: 8300000, guid: cf063f41b700f58499351be198852c7d, type: 3}
   deathFullSound: {fileID: 8300000, guid: 5efe04990fbf2d949947f78e8aefd22b, type: 3}
   dissapearSpeed: 1
