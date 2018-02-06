@@ -11,3 +11,5 @@ Unity 2017.2.0f3 engine, c# scripts.
 
 Last Working Build 
 https://github.com/AntonRassadin/SecondAssault/tree/master/Builds
+
+![MenuScreen](https://github.com/AntonRassadin/SecondAssault/blob/master/MenuScreen.png)
